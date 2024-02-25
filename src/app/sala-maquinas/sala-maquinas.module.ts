@@ -1,36 +1,19 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { ControlComponent } from './control/control.component';
 import { CamarasComponent } from './camaras/camaras.component';
 import { CamaraComponent } from './camara/camara.component';
 import { CamaraDetalleComponent } from './camara-detalle/camara-detalle.component';
-import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'camaras',
-    pathMatch: 'full'
-  },
-  {
-    path: 'camaras',
-    component: CamarasComponent,
-    children: [
-      {
-        path: 'camara',
-        component: CamaraComponent,
-        children: [
-          {
-            path: 'camara-detalle',
-            component: CamaraDetalleComponent
-          }
-        ]
-      }
-    ]
-  },
-  // ... otras rutas hijas de control ...
-];
+import { SalaMaquinasRoutingModule } from './sala-maquinas-routing.module';
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [SalaMaquinasRoutingModule],
+  exports: [RouterModule],
+  declarations: [
+    ControlComponent,
+    CamarasComponent,
+    CamaraComponent,
+    CamaraDetalleComponent
+  ]
 })
 export class SalaMaquinasModule { }
